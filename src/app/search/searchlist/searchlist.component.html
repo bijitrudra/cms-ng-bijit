@@ -1,0 +1,65 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Task Id Column -->
+    <ng-container matColumnDef="taskId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Task Id </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.taskId}} </mat-cell>
+    </ng-container>
+
+    <!-- Packet Id Column -->
+    <ng-container matColumnDef="packetId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Packet Id </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.packetId}} </mat-cell>
+    </ng-container>
+
+    <!-- Department Column -->
+    <ng-container matColumnDef="department">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Department </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.department}} </mat-cell>
+    </ng-container>
+
+    <!-- Create Date Column -->
+    <ng-container matColumnDef="createDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.createDate}} </mat-cell>
+    </ng-container>
+
+    <!-- Create By Column -->
+    <ng-container matColumnDef="createBy">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Create By </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.createBy}} </mat-cell>
+    </ng-container>
+
+    <!-- Received Date Column -->
+    <ng-container matColumnDef="receivedDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Received Date </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.receivedDate}} </mat-cell>
+    </ng-container>
+
+    <!-- Assigned To Column -->
+    <ng-container matColumnDef="assignedTo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.assignedTo}} </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

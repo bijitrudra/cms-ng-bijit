@@ -1,0 +1,46 @@
+<br>
+<h3>Please Select a Business Area:</h3>
+<mat-form-field>
+
+  <mat-select placeholder="Department" name="department" (change)="selectDepartmentChange($event)"
+  				[formControl]="departmentControl" required>
+    <mat-option>--</mat-option>
+    <mat-option *ngFor="let department of departments" [value]="department.name">
+      {{department.name}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="departmentControl.hasError('required')">Please choose an Department</mat-error>
+
+</mat-form-field>
+  
+<br>
+<hr>
+
+<mat-accordion *ngIf="showQMRecord">
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        UnAssigned
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+   	<app-tasklist #unassigned [type]="unassigned" [department]="selectedDepartment"></app-tasklist>
+    
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Suspended
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+    <app-tasklist #suspended [type]="suspended" [department]="selectedDepartment"></app-tasklist>
+    
+  </mat-expansion-panel>
+
+</mat-accordion>
+

@@ -1,0 +1,51 @@
+<h3>Create New Request</h3>
+<br>
+<div class="example-container" style="padding-left: 5px; padding-top: 10px;">
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="taskId" placeholder="Task Id" [formControl]="taskIdControl" required>
+    <mat-error *ngIf="taskIdControl.hasError('required')">Task Id is mandatory</mat-error>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [(ngModel)]="packetId" placeholder="Packet Id" [formControl]="packetIdControl" required>
+    <mat-error *ngIf="packetIdControl.hasError('required')">Packet Id is mandatory</mat-error>
+  </mat-form-field>
+
+  <br><br>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="actId" placeholder="Act Code" [formControl]="actIdControl" required>
+    <mat-error *ngIf="actIdControl.hasError('required')">Act Code is mandatory</mat-error>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <mat-select placeholder="Department" name="department" (change)="selectDepartmentChange($event)"
+  				[formControl]="departmentControl" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let department of departments" [value]="department.name">
+        {{department.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br><br>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="createDate" placeholder="Create date" [formControl]="dateControl" required>
+    <mat-datepicker-toggle matSuffix [for]="createDate"></mat-datepicker-toggle>
+    <mat-datepicker #createDate></mat-datepicker>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [matDatepicker]="receivedDate" placeholder="Received date" [formControl]="dateControl" required>
+    <mat-datepicker-toggle matSuffix [for]="receivedDate"></mat-datepicker-toggle>
+    <mat-datepicker #receivedDate></mat-datepicker>
+  </mat-form-field>
+
+  <br><br>
+  <hr>
+  <button mat-button (click)="create()">&nbsp;Create New Request&nbsp;</button>
+</div>
+
+<br>

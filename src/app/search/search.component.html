@@ -1,0 +1,32 @@
+<h3>Search For:</h3>
+<div class="example-container" style="padding-left: 5px; padding-top: 10px;">
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="searchId" placeholder="Task Id or Packet Id">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="fromDate" placeholder="Create From date">
+    <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+    <mat-datepicker #fromDate></mat-datepicker>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [matDatepicker]="toDate" placeholder="Create To date">
+    <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+    <mat-datepicker #toDate></mat-datepicker>
+  </mat-form-field>
+
+  <br><br>
+  <button mat-button (click)="search()">&nbsp;Search&nbsp;</button>
+</div>
+
+<br>
+<div *ngIf="showSearchRecord">
+  <app-searchlist></app-searchlist>
+</div>
+<div *ngIf="!showSearchRecord">
+  Please Select a Search Option
+</div>

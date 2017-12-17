@@ -1,0 +1,15 @@
+<mat-accordion>
+
+  <mat-expansion-panel *ngFor="let department of departments" (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ department.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+    <app-tasklist [type]="type" [department]=""></app-tasklist>
+    
+  </mat-expansion-panel>
+
+</mat-accordion>
